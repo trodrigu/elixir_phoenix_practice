@@ -7,6 +7,7 @@ defmodule KeepTalking.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug KeepTalking.Auth, repo: KeepTalking.Repo
   end
 
   pipeline :api do
@@ -17,6 +18,8 @@ defmodule KeepTalking.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/users", UserController, only: [:new, :create, :show]
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
   # Other scopes may use custom stacks.
