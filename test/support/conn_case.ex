@@ -26,6 +26,7 @@ defmodule KeepTalking.ConnCase do
       import Ecto.Query
 
       import KeepTalking.Router.Helpers
+      import KeepTalking.TestHelpers
 
       # The default endpoint for testing
       @endpoint KeepTalking.Endpoint

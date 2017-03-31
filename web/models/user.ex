@@ -6,6 +6,7 @@ defmodule KeepTalking.User do
     field :username, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    has_many :videos, KeepTalking.Video
     timestamps()
   end
 
@@ -13,6 +14,7 @@ defmodule KeepTalking.User do
     model
     |> cast(params, [:name, :username])
     |> validate_length(:username, min: 2, max: 20)
+    |> unique_constraint(:username)
   end
 
   def registration_changeset(model, params) do

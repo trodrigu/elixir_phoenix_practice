@@ -22,6 +22,11 @@ defmodule KeepTalking.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
+  scope "/manage", KeepTalking do
+    pipe_through [:browser, :authenticate_user]
+    resources "/videos", VideoController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", KeepTalking do
   #   pipe_through :api

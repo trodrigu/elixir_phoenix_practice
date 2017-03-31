@@ -36,6 +36,7 @@ defmodule KeepTalking.Web do
 
       import KeepTalking.Router.Helpers
       import KeepTalking.Gettext
+      import KeepTalking.Auth, only: [authenticate_user: 2]
     end
   end
 
@@ -58,6 +59,8 @@ defmodule KeepTalking.Web do
   def router do
     quote do
       use Phoenix.Router
+
+      import KeepTalking.Auth, only: [authenticate_user: 2]
     end
   end
 
