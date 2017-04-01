@@ -17,3 +17,6 @@ config :keep_talking, KeepTalking.Repo,
   database: "keep_talking_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :comeonin, :bcrypt_log_rounds, 4
+config :comeonin, :pbkdf2_round, 1
