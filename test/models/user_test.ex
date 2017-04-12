@@ -1,33 +1,23 @@
 defmodule KeepTalking.UserModelTest do
-  use KeepTalking.ModelCase
+  use KeepTalking.ModelCase, async: true
   alias KeepTalking.User
 
-  describe "User.registration changeset/2" do
-    test "with confirmation that does not match" do
-      changeset = User.registration_changeset(%User{}, %{password: "foo", password_confirmation: "bar"})
-      refute changeset.valid?
-    end
+  @valid_attrs %{name: "A User", username: "eva", password: "secret"}
+  @invalid_attrs %{}
 
-    test "with valid parameters" do
-      changeset = User.registration_changeset(%User{}, %{password: "pizzapie", password_confirmation: "pizzapie"})
-      assert changeset.valid?
-    end
+  test "changeset with valid attributes" do
+    changeset = User.changeset(%User{}, @valid_attrs)
+    assert changeset.valid?
   end
 
-  describe "User.changeset/2" do
-    test "with username length under 1 characters" do
-      changeset = User.changeset(%User{}, %{name: "Tommy", username: "t"})
-      refute changeset.valid?
-    end
-
-    test "with length over 20 characters" do
-      changeset = User.changeset(%User{}, %{name: "Tommy", username: "trodtrodtrodtrodtrodtrod"})
-      refute changeset.valid?
-    end
-
-    test "with valid params" do
-      changeset = User.changeset(%User{}, %{name: "Tommy", username: "trod1991"})
-      assert changeset.valid?
-    end
+  test "changeset with invalid attributes" do
+    changeset = User.changeset(%User{}, @invalid_attrs)
+    refute changeset.valid?
   end
+
+  test "changeset does not accept long usernames" do
+    attrs = Map.put(@valid_attrs, :username, String.duplicate("a", 30))
+    assert {:username, "should be at most 20 character(s)"} in errors_on(%User{}, attrs)
+  end
+
 end

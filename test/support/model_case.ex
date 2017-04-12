@@ -21,6 +21,7 @@ defmodule KeepTalking.ModelCase do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+      import KeepTalking.TestHelpers
       import KeepTalking.ModelCase
     end
   end

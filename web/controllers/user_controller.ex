@@ -21,8 +21,7 @@ defmodule KeepTalking.UserController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    user = Repo.get(KeepTalking.User, id)
-    render conn, "show.html", user: user
+  def show(conn, _params) do
+    render conn, "show.html", user: conn.assigns[:current_user]
   end
 end

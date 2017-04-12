@@ -18,8 +18,10 @@ defmodule KeepTalking.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/users", UserController, only: [:new, :create, :show]
+    get "/user/profile", UserController, :show
+    resources "/users", UserController, only: [:new, :create]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+    get "/watch/:id", WatchController, :show
   end
 
   scope "/manage", KeepTalking do

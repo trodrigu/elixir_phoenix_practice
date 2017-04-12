@@ -13,7 +13,8 @@ defmodule KeepTalking.User do
   def changeset(model, params \\ %{}) do
     model
     |> cast(params, [:name, :username])
-    |> validate_length(:username, min: 2, max: 20)
+    |> validate_required([:name, :username])
+    |> validate_length(:username, min: 1, max: 20)
     |> unique_constraint(:username)
   end
 
@@ -21,7 +22,7 @@ defmodule KeepTalking.User do
     model
     |> changeset(params)
     |> cast(params, [:password])
-    |> IO.inspect
+    |> validate_required(:password)
     |> validate_length(:password, min: 6, max: 100)
     |> validate_confirmation(:password, message: "does not match password!")
     |> put_pass_hash()
