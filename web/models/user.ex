@@ -7,6 +7,7 @@ defmodule KeepTalking.User do
     field :password, :string, virtual: true
     field :password_hash, :string
     has_many :videos, KeepTalking.Video
+    has_many :annotations, KeepTalking.Annotation
     timestamps()
   end
 

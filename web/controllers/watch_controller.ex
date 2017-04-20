@@ -1,6 +1,6 @@
 defmodule KeepTalking.WatchController do
   use KeepTalking.Web, :controller
-  alias KeepTalking.Vdieo
+  alias KeepTalking.Video
 
   def show(conn, %{"id" => id}) do
     video = Repo.get!(Video, id)
