@@ -9,11 +9,11 @@ defmodule KeepTalking do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(KeepTalking.Repo, []),
       # Start the endpoint when the application starts
       supervisor(KeepTalking.Endpoint, []),
+      supervisor(KeepTalking.Repo, [])
       # Start your own worker by calling: KeepTalking.Worker.start_link(arg1, arg2, arg3)
-      # worker(KeepTalking.Worker, [arg1, arg2, arg3]),
+      # worker(KeepTalking.Counter, [5]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

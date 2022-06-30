@@ -14,7 +14,7 @@ defmodule KeepTalking.UserController do
       {:ok, user} ->
         conn
         |> KeepTalking.Auth.login(user)
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: "/user/profile")
         |> put_flash(:info, "#{user.name} created!")
       {:error, changeset} ->
         render conn, "new.html", changeset: changeset

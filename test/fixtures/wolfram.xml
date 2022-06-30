@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<queryresult success='true'
+    error='false'
+    numpods='4'
+    datatypes='Math'
+    timedout=''
+    timedoutpods=''
+    timing='0.73'
+    parsetiming='0.092'
+    parsetimedout='false'
+    recalculate='http://www5a.wolframalpha.com/api/v2/recalc.jsp?id=MSPa7803213847d4d74aai8b0000217a7363bhfi0bae3436119537427989876'
+    id='MSPa7804213847d4d74aai8b00000hfh56a5c69ehc06'
+    host='http://www5a.wolframalpha.com'
+    server='59'
+    related='http://www5a.wolframalpha.com/api/v2/relatedQueries.jsp?id=MSPa7805213847d4d74aai8b00003861769af8i0i4ai3436119537427989876'
+    version='2.6'>
+ <pod title='Input'
+     scanner='Identity'
+     id='Input'
+     position='100'
+     error='false'
+     numsubpods='1'>
+  <subpod title=''>
+   <plaintext>100Ã100</plaintext>
+  </subpod>
+ </pod>
+ <pod title='Result'
+     scanner='Simplification'
+     id='Result'
+     position='200'
+     error='false'
+     numsubpods='1'
+     primary='true'>
+  <subpod title=''>
+   <plaintext>10000</plaintext>
+  </subpod>
+  <states count='1'>
+   <state name='Step-by-step solution'
+       input='Result__Step-by-step solution' />
+  </states>
+ </pod>
+ <pod title='Number name'
+     scanner='Integer'
+     id='NumberName'
+     position='300'
+     error='false'
+     numsubpods='1'>
+  <subpod title=''>
+   <plaintext>ten thousand</plaintext>
+  </subpod>
+  <states count='1'>
+   <state name='Words and numerals'
+       input='NumberName__Words and numerals' />
+  </states>
+ </pod>
+ <pod title='Number line'
+     scanner='NumberLine'
+     id='NumberLine'
+     position='400'
+     error='false'
+     numsubpods='1'>
+  <subpod title=''>
+   <plaintext></plaintext>
+  </subpod>
+ </pod>
+</queryresult>

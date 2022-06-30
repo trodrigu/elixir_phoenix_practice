@@ -4,6 +4,10 @@ defmodule KeepTalking.Mixfile do
   def project do
     [app: :keep_talking,
      version: "0.0.1",
+     build_path: "../../_build",
+     config_path: "../../config/config.exs",
+     deps_path: "../../deps",
+     lockfile: "../../mix.lock",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -19,7 +23,7 @@ defmodule KeepTalking.Mixfile do
   def application do
     [mod: {KeepTalking, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :info_sys]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +42,8 @@ defmodule KeepTalking.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:comeonin, "~> 2.0"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:info_sys, in_umbrella: true}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

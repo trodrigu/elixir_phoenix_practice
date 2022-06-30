@@ -11,7 +11,13 @@ defmodule KeepTalking.Router do
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, ["json-api", "json"]
+    plug JaSerializer.Deserializer
+  end
+
+  pipeline :bearer_auth do
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.LoadResource
   end
 
   scope "/", KeepTalking do
@@ -19,7 +25,7 @@ defmodule KeepTalking.Router do
 
     get "/", PageController, :index
     get "/user/profile", UserController, :show
-    resources "/users", UserController, only: [:new, :create]
+    resources "/users", UserController, only: [:new, :create, :show]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     get "/watch/:id", WatchController, :show
   end
